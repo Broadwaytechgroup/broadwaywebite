@@ -1,85 +1,119 @@
-const trainings = [
+const levels = [
   {
-    title: 'Cisco CCNA',
-    duration: '6 semaines',
-    level: 'Débutant à intermédiaire',
-    description: 'Apprenez les fondamentaux du réseau, de l’adressage, de la sécurité réseau et de la connectivité d’entreprise.',
-    modules: ['Réseaux informatiques', 'Adressage IP', 'Configuration de base'],
+    title: 'Initiation',
+    subtitle: "Acquérir les bases essentielles",
+    bullets: ['Notions fondamentales', 'Prise en main pratique', "Confiance et autonomie"],
   },
   {
-    title: 'Microsoft Azure (AZ-900 / AZ-104)',
-    duration: '6 semaines',
-    level: 'Intermédiaire',
-    description: 'Maîtrisez les bases du cloud Azure et les services essentiels pour déployer des solutions modernes.',
-    modules: ['Cloud Computing', 'Virtualisation', 'Administration Azure'],
+    title: 'Développement',
+    subtitle: "Approfondir et déployer",
+    bullets: ['Projets pratiques', "Certifications préparatoires", 'Compétences métiers'],
   },
   {
-    title: 'AWS Certified Solutions Architect',
-    duration: '8 semaines',
-    level: 'Avancé',
-    description: 'Comprenez les concepts de l’architecture cloud AWS et apprenez à concevoir des solutions fiables et évolutives.',
-    modules: ['Architecture AWS', 'Sécurité cloud', 'Scalabilité'],
-  },
-  {
-    title: 'CompTIA Security+',
-    duration: '4 semaines',
-    level: 'Intermédiaire',
-    description: 'Développez des compétences solides en cybersécurité, protection des systèmes et bonnes pratiques de sécurité.',
-    modules: ['Cybersécurité', 'Protection des données', 'Sécurité des postes'],
-  },
-  {
-    title: 'Développement Web Full Stack (React & Node.js)',
-    duration: '8 semaines',
-    level: 'Intermédiaire',
-    description: 'Construisez des applications web modernes avec React, Node.js et des API performantes.',
-    modules: ['React', 'Node.js', 'Développement d’applications'],
-  },
-  {
-    title: 'Intelligence Artificielle & Machine Learning avec Python',
-    duration: '8 semaines',
-    level: 'Avancé',
-    description: 'Découvrez les bases de l’IA, du machine learning et de la Data Science à travers des projets concrets.',
-    modules: ['Python', 'Machine Learning', 'Analyse de données'],
+    title: 'Expertise',
+    subtitle: "Maîtriser et innover",
+    bullets: ['Cas avancés', 'Bonnes pratiques professionnelles', "Préparation aux certifications pro"] ,
   },
 ];
+
+const domains = [
+  'Réseaux & Systèmes',
+  'Cybersécurité',
+  'Cloud & Infrastructure',
+  'Développement & Programmation',
+  'Data & Intelligence Artificielle',
+  'Bureautique professionnelle',
+];
+
+import isc2Logo from '../assets/certs/isc.webp';
+import ecCouncilLogo from '../assets/certs/ec council.webp';
+import ciscoLogo from '../assets/certs/cisco.webp';
+import microsoftLogo from '../assets/certs/Microsoft.png';
+import linuxLogo from '../assets/certs/linux.webp';
+import awsLogo from '../assets/certs/aws.webp';
+
+const certifications = [
+  { name: '(ISC)²', logo: isc2Logo },
+  { name: 'EC-Council', logo: ecCouncilLogo },
+  { name: 'Cisco', logo: ciscoLogo },
+  { name: 'Microsoft', logo: microsoftLogo },
+  { name: 'Linux', logo: linuxLogo },
+  { name: 'AWS', logo: awsLogo },
+];
+
+// URL modifiable pour le site externe de Broadway Academy
+const academyUrl = 'https://example.com';
 
 export default function Trainings() {
   return (
     <section id="trainings" className="section-padding bg-gray-50">
       <div className="container-wide">
-        <div className="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
+        <div className="text-center max-w-3xl mx-auto mb-8 animate-on-scroll">
           <span className="section-label justify-center">
             <span className="w-8 h-px bg-brand-orange" /> Formations <span className="w-8 h-px bg-brand-orange" />
           </span>
-          <h2 className="section-title mb-5">
-            Des <span className="gradient-text">formations concrètes</span> pour faire grandir vos équipes
+          <h2 className="section-title mb-3">
+            Apprendre aujourd'hui, <span className="gradient-text">réussir demain</span>
           </h2>
-          <p className="section-subtitle mx-auto">
-            Des parcours pratiques, adaptés à vos besoins réels et orientés résultats pour une montée en compétences rapide.
+          <p className="section-subtitle mx-auto mb-6">
+            Formations pratiques, certifications reconnues et accompagnement personnalisé pour développer vos compétences dans le numérique.
           </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a href="#contact" className="btn btn-primary">Inscrivez-vous dès maintenant</a>
+            <a href="#contact" className="text-sm font-semibold text-brand-blue hover:text-brand-orange">Contactez-nous pour un programme sur-mesure</a>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {trainings.map((training, index) => (
-            <div key={training.title} className="card-glass p-7 animate-on-scroll" style={{ transitionDelay: `${index * 0.08}s` }}>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-semibold text-brand-blue">{training.level}</span>
-                <span className="text-sm text-gray-500">{training.duration}</span>
-              </div>
-
-              <h3 className="font-display font-bold text-lg text-brand-dark mb-3">{training.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed mb-4">{training.description}</p>
-
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {levels.map((lvl, i) => (
+            <div key={lvl.title} className="card-glass p-6 animate-on-scroll" style={{ transitionDelay: `${i * 0.06}s` }}>
+              <h4 className="font-display font-bold text-lg text-brand-dark mb-2">{lvl.title}</h4>
+              <p className="text-sm text-gray-500 mb-3">{lvl.subtitle}</p>
               <ul className="space-y-2 text-sm text-gray-600">
-                {training.modules.map((module) => (
-                  <li key={module} className="flex items-center gap-2">
+                {lvl.bullets.map((b) => (
+                  <li key={b} className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-brand-orange" />
-                    {module}
+                    {b}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="mb-8 animate-on-scroll">
+          <h3 className="font-display text-2xl font-semibold text-brand-dark mb-4">Nos domaines de formation</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {domains.map((d) => (
+              <div key={d} className="p-4 rounded-lg border border-gray-100 bg-white flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-brand-blue/20" />
+                <span className="text-sm font-semibold text-brand-dark">{d}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-6 animate-on-scroll">
+          <h4 className="font-display text-lg font-semibold text-brand-dark mb-3">Certifications reconnues</h4>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 items-center">
+            {certifications.map((c) => (
+              <div key={c.name} className="flex flex-col items-center p-3 bg-white rounded-md border border-gray-100">
+                <img src={c.logo} alt={c.name} className="h-12 object-contain" />
+                <div className="text-xs text-center text-gray-700 mt-2">{c.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pt-4 border-t border-gray-100 animate-on-scroll">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div className="max-w-2xl mx-auto">
+              <h5 className="font-display font-bold text-lg text-brand-dark">Prêt à commencer ?</h5>
+              <p className="text-sm text-gray-500 mb-2">Pour plus d'informations, consultez le site de Broadway Academy :</p>
+              <a href={academyUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-brand-blue hover:text-brand-orange">Visiter le site de Broadway Academy</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
