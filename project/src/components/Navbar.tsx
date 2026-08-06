@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { ABOUT_NAV_LINKS, NAV_LINKS } from '@/data/content';
 import logolight from '@/assets/logolight.png';
 import logodark from '@/assets/logodark.png';
@@ -25,64 +26,77 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-wide flex items-center justify-between">
-        {/* Logo */}
-<a href="#hero" className="flex items-center">
-  <img
-    src={scrolled ? logodark : logolight}
-    alt="Broadway Technologies"
-    className={`w-auto transition-all duration-300 hover:scale-105 ${
-    scrolled ? "h-24" : "h-24 lg:h-40"
-  }`}
-  />
-</a>
+          {/* Logo */}
+  <Link to="/" className="flex items-center">
+    <img
+      src={logodark}
+      alt="Broadway Technologies"
+      className={`w-auto transition-all duration-300 hover:scale-105 ${
+        scrolled ? 'h-24' : 'h-24 lg:h-40'
+      }`}
+    />
+  </Link>
 
         {/* Desktop nav */}
         <ul className="hidden md:flex flex-wrap items-center justify-end gap-10 xl:gap-8">
+          {NAV_LINKS[0] && (
+            <li key={NAV_LINKS[0].href}>
+              <Link
+                to={NAV_LINKS[0].href}
+                className={`nav-link text-sm font-medium transition-colors ${
+                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
+                }`}
+              >
+                {NAV_LINKS[0].label}
+              </Link>
+            </li>
+          )}
+
           <li className="relative">
             <button
               type="button"
               onClick={() => setAboutOpen((prev) => !prev)}
               className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 ${
-                scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white/90 hover:text-white'
+                scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
               }`}
             >
-              Accueil
+              À propos
               <ChevronDown size={16} />
             </button>
 
             {aboutOpen && (
               <div className="absolute left-0 top-full mt-3 w-56 rounded-xl border border-gray-100 bg-white p-3 shadow-xl">
                 {ABOUT_NAV_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
-                    href={link.href}
+                    to={link.href}
                     onClick={() => setAboutOpen(false)}
                     className="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-brand-blue/5 hover:text-brand-blue"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
           </li>
 
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.slice(1).map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <Link
+                to={link.href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white/90 hover:text-white'
+                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a href="#contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
-          Demander un devis
-        </a>
+<Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
+            Demander un devis
+          </Link>
 
         {/* Mobile toggle */}
         <button
@@ -98,6 +112,18 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white absolute top-full inset-x-0 shadow-lg border-t border-gray-100">
           <ul className="flex flex-col py-4 px-6">
+            {NAV_LINKS[0] && (
+              <li key={NAV_LINKS[0].href} className="border-b border-gray-50">
+                <Link
+                  to={NAV_LINKS[0].href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-gray-700 hover:text-brand-blue font-medium"
+                >
+                  {NAV_LINKS[0].label}
+                </Link>
+              </li>
+            )}
+
             <li className="border-b border-gray-50">
               <button
                 type="button"
@@ -110,9 +136,9 @@ export default function Navbar() {
               {aboutOpen && (
                 <div className="pb-3 pl-4">
                   {ABOUT_NAV_LINKS.map((link) => (
-                    <a
+                    <Link
                       key={link.href}
-                      href={link.href}
+                      to={link.href}
                       onClick={() => {
                         setAboutOpen(false);
                         setOpen(false);
@@ -120,30 +146,32 @@ export default function Navbar() {
                       className="block py-2 text-sm text-gray-600 hover:text-brand-blue"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </li>
-            {NAV_LINKS.map((link) => (
+
+            {NAV_LINKS.slice(1).map((link) => (
               <li key={link.href} className="border-b border-gray-50 last:border-0">
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   onClick={() => setOpen(false)}
                   className="block py-3 text-gray-700 hover:text-brand-blue font-medium"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
+
             <li className="pt-4">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={() => setOpen(false)}
                 className="btn-primary w-full justify-center"
               >
                 Demander un devis
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

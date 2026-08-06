@@ -1,17 +1,18 @@
 export const NAV_LINKS = [
-  { label: 'Formations', href: '#trainings' },
-  { label: 'Boutique', href: '#shop' },
-  { label: 'Réalisations', href: '#portfolio' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Accueil', href: '/' },
+  { label: 'Formations', href: '/trainings' },
+  { label: 'Boutique', href: '/shop' },
+  { label: 'Réalisations', href: '/portfolio' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const ABOUT_NAV_LINKS = [
-  { label: 'À propos', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Technologies', href: '#technologies' },
-  { label: 'Notre processus', href: '#process' },
+  { label: 'À propos', href: '/about' },
+  { label: 'Services', href: '/about' },
+  { label: 'Solutions', href: '/about' },
+  { label: 'Technologies', href: '/about' },
+  { label: 'Notre processus', href: '/about' },
 ];
 
 export const SERVICES = [

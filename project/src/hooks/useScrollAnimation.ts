@@ -23,22 +23,38 @@ export function useScrollAnimation() {
   return { ref, isVisible };
 }
 
-export function useScrollAnimationAll() {
+export function useScrollAnimationAll(deps: unknown[] = []) {
   useEffect(() => {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+    let observer: IntersectionObserver | null = null;
+    const observeAll = () => {
+      const elements = document.querySelectorAll('.animate-on-scroll');
+      if (!elements.length) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer?.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      elements.forEach((el) => observer?.observe(el));
+    };
+
+    observeAll();
+    const frame = window.requestAnimationFrame(observeAll);
+    const timeout = window.setTimeout(observeAll, 150);
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
+  }, deps);
 }
 
 export function useCounter(target: number, duration = 2000, startOnVisible = true) {
