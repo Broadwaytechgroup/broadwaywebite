@@ -29,7 +29,7 @@ export default function Navbar() {
           {/* Logo */}
   <Link to="/" className="flex items-center">
     <img
-      src={logodark}
+      src={scrolled ? logodark : logolight}
       alt="Broadway Technologies"
       className={`w-auto transition-all duration-300 hover:scale-105 ${
         scrolled ? 'h-24' : 'h-24 lg:h-40'
@@ -44,7 +44,7 @@ export default function Navbar() {
               <Link
                 to={NAV_LINKS[0].href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
+                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
                 {NAV_LINKS[0].label}
@@ -57,7 +57,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setAboutOpen((prev) => !prev)}
               className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 ${
-                scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
+                scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
               }`}
             >
               À propos
@@ -85,7 +85,7 @@ export default function Navbar() {
               <Link
                 to={link.href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-gray-900 hover:text-brand-blue'
+                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
                 {link.label}
@@ -94,13 +94,13 @@ export default function Navbar() {
           ))}
         </ul>
 
-<Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
+        <Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
             Demander un devis
           </Link>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-brand-dark p-2"
+          className={`lg:hidden p-2 ${scrolled ? 'text-brand-dark' : 'text-white'}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
