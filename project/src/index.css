@@ -23,6 +23,7 @@
 @layer components {
   .section-padding {
     @apply py-20 md:py-28;
+    scroll-margin-top: 7rem;
   }
   .container-wide {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;

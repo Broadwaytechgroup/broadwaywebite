@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ABOUT_NAV_LINKS, NAV_LINKS } from '@/data/content';
 import logolight from '@/assets/logolight.png';
 import logodark from '@/assets/logodark.png';
 
 export default function Navbar() {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -17,10 +18,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const isHome = location.pathname === '/';
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || !isHome
           ? 'bg-white/90 backdrop-blur-md shadow-md py-3'
           : 'bg-transparent py-5'
       }`}
@@ -29,10 +32,10 @@ export default function Navbar() {
           {/* Logo */}
   <Link to="/" className="flex items-center">
     <img
-      src={scrolled ? logodark : logolight}
+      src={scrolled || !isHome ? logodark : logolight}
       alt="Broadway Technologies"
       className={`w-auto transition-all duration-300 hover:scale-105 ${
-        scrolled ? 'h-24' : 'h-24 lg:h-40'
+        scrolled || !isHome ? 'h-24' : 'h-24 lg:h-40'
       }`}
     />
   </Link>
@@ -44,7 +47,7 @@ export default function Navbar() {
               <Link
                 to={NAV_LINKS[0].href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
+                  scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
                 {NAV_LINKS[0].label}
@@ -57,7 +60,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setAboutOpen((prev) => !prev)}
               className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 ${
-                scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
+                scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
               }`}
             >
               À propos
@@ -85,7 +88,7 @@ export default function Navbar() {
               <Link
                 to={link.href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  scrolled ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
+                  scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
                 {link.label}
@@ -100,7 +103,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`lg:hidden p-2 ${scrolled ? 'text-brand-dark' : 'text-white'}`}
+          className={`lg:hidden p-2 ${scrolled || !isHome ? 'text-brand-dark' : 'text-white'}`}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >

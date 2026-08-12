@@ -17,6 +17,10 @@ function AppRoutes() {
   const location = useLocation();
   useScrollAnimationAll([location.pathname, location.hash]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />

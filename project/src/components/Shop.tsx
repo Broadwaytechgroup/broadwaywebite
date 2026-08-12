@@ -149,11 +149,10 @@ export default function Shop() {
               <div className="grid lg:grid-cols-2 gap-6">
                 {section.products.map((product, index) => (
                   <div key={product.name} className="card-glass p-7" style={{ transitionDelay: `${(sectionIndex + index) * 0.05}s` }}>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-start mb-4">
                       <span className="inline-flex items-center rounded-full bg-brand-blue/10 px-3 py-1 text-xs font-semibold text-brand-blue">
                         {product.badge}
                       </span>
-                      <span className="text-sm font-semibold text-brand-orange">{product.price}</span>
                     </div>
 
                     <div className="h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-blue/15 via-brand-blue/5 to-brand-orange/10 mb-5 border border-gray-100">
