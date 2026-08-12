@@ -28,20 +28,54 @@ export default function Contact() {
   try {
     console.log("📨 Envoi du formulaire...", form);
 
-    const response = await fetch("http://localhost:3001/api/contact", {
+    // En développement :
+    // VITE_API_URL=http://localhost:3001
+    //
+    // En production :
+    // laisser VITE_API_URL vide si le frontend et le backend
+    // utilisent le même domaine.
+    const API_URL = import.meta.env.VITE_API_URL || "";
+
+    const response = await fetch(`${API_URL}/api/contact`, {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+
+      body: JSON.stringify({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        subject: form.subject.trim(),
+        message: form.message.trim(),
+      }),
     });
 
-    const data = await response.json();
+    console.log("📡 Statut HTTP :", response.status);
 
-    console.log("📩 Réponse du serveur :", {
-      status: response.status,
-      data,
-    });
+    const contentType = response.headers.get("content-type") || "";
+
+    let data: {
+      success?: boolean;
+      message?: string;
+      details?: string;
+    };
+
+    // Le serveur doit normalement retourner du JSON.
+    // Cette protection évite "Unexpected end of JSON input".
+    if (contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+
+      console.error("❌ Réponse non JSON :", text);
+
+      throw new Error(
+        `Le serveur a retourné une réponse inattendue (${response.status}).`
+      );
+    }
+
+    console.log("📩 Réponse du serveur :", data);
 
     if (!response.ok || !data.success) {
       throw new Error(
@@ -49,10 +83,12 @@ export default function Contact() {
       );
     }
 
+    // Succès
     setSent(true);
 
     setTimeout(() => {
       setSent(false);
+
       setForm({
         name: "",
         email: "",
@@ -62,6 +98,14 @@ export default function Contact() {
     }, 4000);
   } catch (error) {
     console.error("❌ Erreur complète :", error);
+
+    if (error instanceof TypeError && error.message === "Failed to fetch") {
+      alert(
+        "Impossible de contacter le serveur. Vérifiez que le serveur est démarré et que l'adresse API est correcte."
+      );
+
+      return;
+    }
 
     alert(
       error instanceof Error
