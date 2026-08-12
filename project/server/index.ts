@@ -26,7 +26,7 @@ const allowedOrigins = FRONTEND_URL
   ? FRONTEND_URL.split(",")
       .map((origin) => origin.trim())
       .filter(Boolean)
-  : ["http://localhost:5173"];
+  : ["http://localhost:5175"];
 
 console.log("🌐 Origines autorisées :", allowedOrigins);
 
