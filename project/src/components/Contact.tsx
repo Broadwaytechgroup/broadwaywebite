@@ -31,13 +31,13 @@ export default function Contact() {
     console.log("📤 URL appelée :", apiUrl);
     console.log("📦 Données :", form);
 
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+    const response = await fetch("/api/contact", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(form),
+});
 
     console.log("📥 Status :", response.status);
     console.log("📥 URL finale :", response.url);
