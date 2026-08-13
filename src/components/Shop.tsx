@@ -3,7 +3,7 @@ import dellXps from '../assets/shop/dell.png';
 import poweredgeR760 from '../assets/shop/serverdell.avif';
 import synologyDs224 from '../assets/shop/synology.jpg';
 import cisco9300 from '../assets/shop/cisco.avif';
-import unifiU6Pro from '../assets/shop/unifi.webp';
+import unifiU6Pro from '../assets/shop/Unifi.webp';
 import hpOfficejet from '../assets/shop/hpoffice.webp';
 import dellUltrasharp from '../assets/shop/dellecran.webp';
 import apcUps from '../assets/shop/apc.webp';
