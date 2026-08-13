@@ -13,8 +13,6 @@ const PORT = Number(process.env.PORT) || 3001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// En production, Render fournit cette variable.
-// En local, on utilise localhost.
 const FRONTEND_URL =
   process.env.FRONTEND_URL || "http://localhost:5175";
 
@@ -37,9 +35,15 @@ if (
   !MAIL_FROM ||
   !MAIL_TO
 ) {
-  console.error(
-    "❌ Variables d'environnement Microsoft ou email manquantes."
-  );
+  console.error("❌ Variables d'environnement manquantes.");
+
+  console.error({
+    MICROSOFT_CLIENT_ID: !!MICROSOFT_CLIENT_ID,
+    MICROSOFT_CLIENT_SECRET: !!MICROSOFT_CLIENT_SECRET,
+    MICROSOFT_TENANT_ID: !!MICROSOFT_TENANT_ID,
+    MAIL_FROM: !!MAIL_FROM,
+    MAIL_TO: !!MAIL_TO,
+  });
 
   process.exit(1);
 }
@@ -59,7 +63,7 @@ app.use(
 app.use(express.json());
 
 // ============================================================
-// Microsoft Graph
+// Authentification Microsoft Graph
 // ============================================================
 
 const credential = new ClientSecretCredential(
@@ -80,20 +84,44 @@ app.get("/api/health", (_req: Request, res: Response) => {
 });
 
 // ============================================================
-// API CONTACT
+// API Contact
 // ============================================================
 
 app.post("/api/contact", async (req: Request, res: Response) => {
   try {
     console.log("══════════════════════════════════════");
     console.log("🚨 API CONTACT APPELÉE");
-    console.log("🌐 Origin :", req.headers.origin);
+
     console.log("🌐 IP :", req.ip);
-    console.log("📦 Body :", req.body);
+    console.log("🔗 Origin :", req.headers.origin);
+    console.log("🖥️ User-Agent :", req.headers["user-agent"]);
 
-    const body = req.body ?? {};
+    const body = req.body;
 
-    const { name, email, subject, message } = body;
+    console.log("📦 Body :", body);
+
+    if (!body || typeof body !== "object") {
+      return res.status(400).json({
+        success: false,
+        message: "Corps de la requête invalide.",
+      });
+    }
+
+    const {
+      name,
+      email,
+      subject,
+      message,
+    }: {
+      name?: string;
+      email?: string;
+      subject?: string;
+      message?: string;
+    } = body;
+
+    console.log("👤 Nom :", name);
+    console.log("📧 Email :", email);
+    console.log("📝 Sujet :", subject);
 
     // ----------------------------------------------------------
     // Validation
@@ -105,10 +133,6 @@ app.post("/api/contact", async (req: Request, res: Response) => {
         message: "Tous les champs sont obligatoires.",
       });
     }
-
-    console.log("👤 Nom :", name);
-    console.log("📧 Email :", email);
-    console.log("📝 Sujet :", subject);
 
     // ----------------------------------------------------------
     // Authentification Microsoft Graph
@@ -129,32 +153,26 @@ app.post("/api/contact", async (req: Request, res: Response) => {
     console.log("✅ Token Microsoft Graph obtenu.");
 
     // ----------------------------------------------------------
-    // Préparation du contenu du mail
+    // Construction du mail
     // ----------------------------------------------------------
 
     const emailHtml = `
-      <div
-        style="
-          font-family: Arial, sans-serif;
-          line-height: 1.6;
-          color: #222;
-        "
-      >
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <h2>Nouveau message depuis le site Broadway</h2>
 
         <p>
           <strong>Nom :</strong>
-          ${escapeHtml(String(name))}
+          ${escapeHtml(name)}
         </p>
 
         <p>
           <strong>Email :</strong>
-          ${escapeHtml(String(email))}
+          ${escapeHtml(email)}
         </p>
 
         <p>
           <strong>Sujet :</strong>
-          ${escapeHtml(String(subject))}
+          ${escapeHtml(subject)}
         </p>
 
         <hr />
@@ -164,7 +182,7 @@ app.post("/api/contact", async (req: Request, res: Response) => {
         </p>
 
         <p>
-          ${escapeHtml(String(message)).replace(/\n/g, "<br />")}
+          ${escapeHtml(message).replace(/\n/g, "<br />")}
         </p>
       </div>
     `;
@@ -208,7 +226,7 @@ app.post("/api/contact", async (req: Request, res: Response) => {
               {
                 emailAddress: {
                   address: email,
-                  name: String(name),
+                  name,
                 },
               },
             ],
@@ -220,7 +238,7 @@ app.post("/api/contact", async (req: Request, res: Response) => {
     );
 
     // ----------------------------------------------------------
-    // Gestion erreur Graph
+    // Gestion erreur Microsoft Graph
     // ----------------------------------------------------------
 
     if (!graphResponse.ok) {
@@ -233,12 +251,9 @@ app.post("/api/contact", async (req: Request, res: Response) => {
       return res.status(graphResponse.status).json({
         success: false,
         message: `Microsoft Graph a refusé l'envoi (${graphResponse.status}).`,
+        details: errorText,
       });
     }
-
-    // ----------------------------------------------------------
-    // Succès
-    // ----------------------------------------------------------
 
     console.log("✅ Email envoyé avec succès.");
     console.log("══════════════════════════════════════");
@@ -259,44 +274,43 @@ app.post("/api/contact", async (req: Request, res: Response) => {
 
     return res.status(500).json({
       success: false,
-      message:
-        "Une erreur est survenue lors de l'envoi du message.",
+      message: "Une erreur est survenue lors de l'envoi du message.",
     });
   }
 });
 
 // ============================================================
-// Fichiers statiques du frontend
+// Frontend React/Vite
 // ============================================================
 
-const distPath = path.resolve(__dirname, "../dist");
+// En production, server/index.ts se trouve dans :
+// dist/server/index.js
+//
+// Le dossier dist du frontend se trouve donc deux niveaux plus haut.
+
+const distPath = path.resolve(__dirname, "..",  "dist");
+
+console.log("📁 Dossier frontend :", distPath);
 
 app.use(express.static(distPath));
 
-// ============================================================
-// Fallback SPA
-// ============================================================
-
-// Express 5 n'accepte plus app.get("*").
-// On utilise un middleware pour éviter l'erreur path-to-regexp.
+// Toutes les routes frontend sont renvoyées vers index.html.
+// IMPORTANT : Express 5 ne permet plus app.get("*").
+// On utilise donc un middleware sans chemin.
 
 app.use((req: Request, res: Response, next) => {
-  if (req.method !== "GET") {
+  if (
+    req.method !== "GET" ||
+    req.path.startsWith("/api/")
+  ) {
     return next();
   }
 
-  if (req.path.startsWith("/api/")) {
-    return res.status(404).json({
-      success: false,
-      message: "Route API introuvable.",
-    });
-  }
-
-  return res.sendFile(path.join(distPath, "index.html"));
+  res.sendFile(path.join(distPath, "index.html"));
 });
 
 // ============================================================
-// Gestionnaire d'erreurs
+// Gestion des erreurs
 // ============================================================
 
 app.use(
@@ -304,27 +318,16 @@ app.use(
     error: unknown,
     _req: Request,
     res: Response,
-    _next: unknown
+    _next: express.NextFunction
   ) => {
     console.error("❌ Erreur serveur :", error);
 
-    return res.status(500).json({
+    res.status(500).json({
       success: false,
       message: "Erreur interne du serveur.",
     });
   }
 );
-
-// ============================================================
-// Démarrage
-// ============================================================
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("══════════════════════════════════════");
-  console.log(`✅ Serveur démarré sur le port ${PORT}`);
-  console.log(`🌐 Frontend autorisé : ${FRONTEND_URL}`);
-  console.log("══════════════════════════════════════");
-});
 
 // ============================================================
 // Protection HTML
@@ -338,3 +341,16 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
+// ============================================================
+// Démarrage
+// ============================================================
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("");
+  console.log("══════════════════════════════════════");
+  console.log(`✅ Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`🌐 CORS : ${FRONTEND_URL}`);
+  console.log(`📁 Frontend : ${distPath}`);
+  console.log("══════════════════════════════════════");
+});
