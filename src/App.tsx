@@ -1,41 +1,55 @@
-import { Suspense, lazy, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { useScrollAnimationAll } from '@/hooks/useScrollAnimation';
 
-const Home = lazy(() => import('@/pages/Home'));
-const AboutPage = lazy(() => import('@/pages/AboutPage'));
-const TrainingsPage = lazy(() => import('@/pages/TrainingsPage'));
-const ShopPage = lazy(() => import('@/pages/ShopPage'));
-const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
-const FAQPage = lazy(() => import('@/pages/FAQPage'));
-const ContactPage = lazy(() => import('@/pages/ContactPage'));
+import Home from '@/pages/Home';
+import AboutPage from '@/pages/AboutPage';
+import TrainingsPage from '@/pages/TrainingsPage';
+import ShopPage from '@/pages/ShopPage';
+import PortfolioPage from '@/pages/PortfolioPage';
+import FAQPage from '@/pages/FAQPage';
+import ContactPage from '@/pages/ContactPage';
 
 function AppRoutes() {
   const location = useLocation();
-  useScrollAnimationAll([location.pathname, location.hash]);
+
+  useScrollAnimationAll([
+    location.pathname,
+    location.hash,
+  ]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    });
   }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Chargement...</div>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/trainings" element={<TrainingsPage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </Suspense>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/trainings" element={<TrainingsPage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="*" element={<Home />} />
+      </Routes>
+
       <Footer />
       <ScrollToTop />
     </div>
@@ -44,13 +58,14 @@ function AppRoutes() {
 
 function App() {
   useEffect(() => {
-    document.title = 'Broadway Technologies — Transformation digitale & services numériques';
+    document.title =
+      'Broadway Technologies — Transformation digitale & services numériques';
   }, []);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppRoutes />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
