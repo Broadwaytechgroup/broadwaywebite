@@ -97,7 +97,7 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <a href="/services" className="btn-orange">
+            <a href="/about" className="btn-orange">
               Découvrir nos services <ArrowRight size={18} />
             </a>
             <a href="/contact" className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-white hover:text-brand-dark transition-all duration-300 hover:-translate-y-0.5">

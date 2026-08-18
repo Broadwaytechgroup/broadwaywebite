@@ -100,7 +100,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {SERVICES.slice(0, 8).map((s) => (
                 <li key={s.title}>
-                  <a href="#services" className="text-white/60 hover:text-brand-orange transition-colors text-sm">
+                  <a href="/services" className="text-white/60 hover:text-brand-orange transition-colors text-sm">
                     {s.title}
                   </a>
                 </li>
