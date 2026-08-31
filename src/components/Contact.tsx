@@ -26,18 +26,23 @@ export default function Contact() {
   e.preventDefault();
 
   try {
-    const apiUrl = "http://localhost:3001/api/contact";
+    const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:3001";
 
-    console.log("📤 URL appelée :", apiUrl);
-    console.log("📦 Données :", form);
-
-    const response = await fetch("/api/contact", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(form),
-});
+console.log("📤 URL appelée :", `${API_URL}/api/contact`);
+console.log("📦 Données :", form);
+console.log("API_URL =", API_URL);
+const response = await fetch(
+  `${API_URL}/api/contact`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(form),
+  }
+);
 
     console.log("📥 Status :", response.status);
     console.log("📥 URL finale :", response.url);

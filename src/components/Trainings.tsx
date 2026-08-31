@@ -60,8 +60,8 @@ export default function Trainings() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="#contact" className="btn btn-primary">Inscrivez-vous dès maintenant</a>
-            <a href="#contact" className="text-sm font-semibold text-brand-blue hover:text-brand-orange">Contactez-nous pour un programme sur-mesure</a>
+            <a href="/contact" className="btn btn-primary">Inscrivez-vous dès maintenant</a>
+            <a href="/contact" className="text-sm font-semibold text-brand-blue hover:text-brand-orange">Contactez-nous pour un programme sur-mesure</a>
           </div>
         </div>
 

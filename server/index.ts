@@ -4,17 +4,18 @@ import dotenv from "dotenv";
 import { ClientSecretCredential } from "@azure/identity";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 
 const FRONTEND_URL =
-  process.env.FRONTEND_URL || "http://localhost:5175";
+  process.env.FRONTEND_URL || "http://localhost:5176";
 
 const {
   MICROSOFT_CLIENT_ID,
@@ -292,7 +293,7 @@ const distPath = path.resolve(__dirname, "..",  "dist");
 
 console.log("📁 Dossier frontend :", distPath);
 
-app.use(express.static(distPath));
+
 
 // Toutes les routes frontend sont renvoyées vers index.html.
 // IMPORTANT : Express 5 ne permet plus app.get("*").
