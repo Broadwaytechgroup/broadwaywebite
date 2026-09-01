@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/3 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl" />
 
       <div className="container-wide relative pt-20 pb-8">
-        {/* Newsletter banner */}
+        {/* Newsletter banner 
         <div className="bg-gradient-to-r from-brand-blue to-brand-blueDark rounded-3xl p-8 md:p-12 mb-16 relative overflow-hidden">
           <div className="absolute inset-0 circuit-bg opacity-20" />
           <div className="relative grid md:grid-cols-2 gap-8 items-center">
@@ -47,7 +47,7 @@ export default function Footer() {
             </form>
           </div>
         </div>
-
+*/}
         {/* Main footer grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
