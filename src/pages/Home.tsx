@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
+import FAQ from '@/components/FAQ';
 
 const pageCards = [
   { title: 'Formations', description: 'Parcours pratiques et certifications reconnues.', href: '/trainings' },
   { title: 'Boutique', description: 'Équipements modernes pour vos projets IT.', href: '/shop' },
   { title: 'Réalisations', description: 'Découvrir nos projets et cas clients.', href: '/portfolio' },
-  { title: 'FAQ', description: 'Questions fréquentes et informations utiles.', href: '/faq' },
   { title: 'Contact', description: 'Nous contacter pour un accompagnement personnalisé.', href: '/contact' },
 ];
 
@@ -39,6 +39,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <FAQ />
     </main>
   );
 }

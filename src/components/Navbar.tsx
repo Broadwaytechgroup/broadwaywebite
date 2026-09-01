@@ -28,9 +28,9 @@ export default function Navbar() {
           : 'bg-transparent py-5'
       }`}
     >
-      <nav className="container-wide flex items-center justify-between">
+      <nav className="container-wide flex items-center justify-between pt-1">
           {/* Logo */}
-  <Link to="/" className="flex items-center">
+  <Link to="/" className="flex items-center -mt-9">
     <img
       src={scrolled || !isHome ? logodark : logolight}
       alt="Broadway Technologies"
@@ -41,12 +41,12 @@ export default function Navbar() {
   </Link>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex flex-wrap items-center justify-end gap-10 xl:gap-8">
+        <ul className="hidden md:flex flex-wrap items-center justify-end gap-10 xl:gap-8 -mt-1">
           {NAV_LINKS[0] && (
             <li key={NAV_LINKS[0].href}>
               <Link
                 to={NAV_LINKS[0].href}
-                className={`nav-link text-sm font-medium transition-colors ${
+                className={`nav-link text-sm font-medium transition-colors pt-1 ${
                   scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >
@@ -59,7 +59,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setAboutOpen((prev) => !prev)}
-              className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 ${
+              className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 pt-1 ${
                 scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
               }`}
             >
@@ -87,7 +87,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className={`nav-link text-sm font-medium transition-colors ${
+                className={`nav-link text-sm font-medium transition-colors pt-1 ${
                   scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
                 }`}
               >

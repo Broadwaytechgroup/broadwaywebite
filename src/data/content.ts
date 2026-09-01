@@ -3,7 +3,6 @@ export const NAV_LINKS = [
   { label: 'Formations', href: '/trainings' },
   { label: 'Boutique', href: '/shop' },
   { label: 'Réalisations', href: '/portfolio' },
-  { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
 
