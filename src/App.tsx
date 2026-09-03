@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -11,13 +11,17 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { useScrollAnimationAll } from '@/hooks/useScrollAnimation';
 
-import Home from '@/pages/Home';
-import AboutPage from '@/pages/AboutPage';
-import TrainingsPage from '@/pages/TrainingsPage';
-import ShopPage from '@/pages/ShopPage';
-import PortfolioPage from '@/pages/PortfolioPage';
-import FAQPage from '@/pages/FAQPage';
-import ContactPage from '@/pages/ContactPage';
+import { lazy } from "react";
+
+const Home = lazy(() => import('@/pages/Home'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const ServicesPage = lazy(() => import('@/pages/ServicesPage'));
+const SolutionsPage = lazy(() => import('@/pages/SolutionsPage'));
+const TrainingsPage = lazy(() => import('@/pages/TrainingsPage'));
+const ShopPage = lazy(() => import('@/pages/ShopPage'));
+const PortfolioPage = lazy(() => import('@/pages/PortfolioPage'));
+const FAQPage = lazy(() => import('@/pages/FAQPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
 
 function AppRoutes() {
   const location = useLocation();
@@ -32,23 +36,38 @@ function AppRoutes() {
       top: 0,
       behavior: 'auto',
     });
-  }, [location.pathname]);
+
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+
+      if (element) {
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/trainings" element={<TrainingsPage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+      <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-white text-brand-blue font-semibold">Chargement...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/trainings" element={<TrainingsPage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
-        <Route path="*" element={<Home />} />
-      </Routes>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
 
       <Footer />
       <ScrollToTop />

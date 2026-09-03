@@ -14,9 +14,7 @@ export default function Portfolio() {
       <div className="absolute inset-0 circuit-bg opacity-30" />
       <div className="container-wide relative">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
-          <span className="section-label justify-center">
-            <span className="w-8 h-px bg-brand-orange" /> Réalisations <span className="w-8 h-px bg-brand-orange" />
-          </span>
+          
           <h2 className="section-title mb-5">
             Des projets qui <span className="gradient-text">parlent</span> pour nous
           </h2>

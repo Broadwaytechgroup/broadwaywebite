@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { ABOUT_NAV_LINKS, NAV_LINKS } from '@/data/content';
+import { NAV_LINKS } from '@/data/content';
 import logolight from '@/assets/logolight.png';
 import logodark from '@/assets/logodark.png';
 
@@ -9,7 +9,6 @@ export default function Navbar() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -19,6 +18,7 @@ export default function Navbar() {
   }, []);
 
   const isHome = location.pathname === '/';
+  const isActiveLink = (href: string) => location.pathname === href;
 
   return (
     <header
@@ -42,64 +42,31 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <ul className="hidden md:flex flex-wrap items-center justify-end gap-10 xl:gap-8 -mt-1">
-          {NAV_LINKS[0] && (
-            <li key={NAV_LINKS[0].href}>
-              <Link
-                to={NAV_LINKS[0].href}
-                className={`nav-link text-sm font-medium transition-colors pt-1 ${
-                  scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
-                }`}
-              >
-                {NAV_LINKS[0].label}
-              </Link>
-            </li>
-          )}
-
-          <li className="relative">
-            <button
-              type="button"
-              onClick={() => setAboutOpen((prev) => !prev)}
-              className={`nav-link text-sm font-medium transition-colors flex items-center gap-1 pt-1 ${
-                scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
-              }`}
-            >
-              À propos
-              <ChevronDown size={16} />
-            </button>
-
-            {aboutOpen && (
-              <div className="absolute left-0 top-full mt-3 w-56 rounded-xl border border-gray-100 bg-white p-3 shadow-xl">
-                {ABOUT_NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setAboutOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-brand-blue/5 hover:text-brand-blue"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </li>
-
-          {NAV_LINKS.slice(1).map((link) => (
-            <li key={link.href}>
-              <Link
-                to={link.href}
-                className={`nav-link text-sm font-medium transition-colors pt-1 ${
-                  scrolled || !isHome ? 'text-gray-700 hover:text-brand-blue' : 'text-white hover:text-brand-blue'
-                }`}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const active = isActiveLink(link.href);
+            return (
+              <li key={link.href}>
+                <Link
+                  to={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`nav-link text-sm font-medium transition-colors pt-1 ${
+                    active
+                      ? 'text-brand-orange font-semibold'
+                      : scrolled || !isHome
+                        ? 'text-gray-700 hover:text-brand-blue'
+                        : 'text-white hover:text-brand-blue'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <Link to="/contact" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
-            Demander un devis
-          </Link>
+          Demander un devis
+        </Link>
 
         {/* Mobile toggle */}
         <button
@@ -115,57 +82,23 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white absolute top-full inset-x-0 shadow-lg border-t border-gray-100">
           <ul className="flex flex-col py-4 px-6">
-            {NAV_LINKS[0] && (
-              <li key={NAV_LINKS[0].href} className="border-b border-gray-50">
-                <Link
-                  to={NAV_LINKS[0].href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-gray-700 hover:text-brand-blue font-medium"
-                >
-                  {NAV_LINKS[0].label}
-                </Link>
-              </li>
-            )}
-
-            <li className="border-b border-gray-50">
-              <button
-                type="button"
-                onClick={() => setAboutOpen((prev) => !prev)}
-                className="flex w-full items-center justify-between py-3 text-left text-gray-700 hover:text-brand-blue font-medium"
-              >
-                <span>À propos</span>
-                <ChevronDown size={16} />
-              </button>
-              {aboutOpen && (
-                <div className="pb-3 pl-4">
-                  {ABOUT_NAV_LINKS.map((link) => (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      onClick={() => {
-                        setAboutOpen(false);
-                        setOpen(false);
-                      }}
-                      className="block py-2 text-sm text-gray-600 hover:text-brand-blue"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-
-            {NAV_LINKS.slice(1).map((link) => (
-              <li key={link.href} className="border-b border-gray-50 last:border-0">
-                <Link
-                  to={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-gray-700 hover:text-brand-blue font-medium"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const active = isActiveLink(link.href);
+              return (
+                <li key={link.href} className="border-b border-gray-50 last:border-0">
+                  <Link
+                    to={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? 'page' : undefined}
+                    className={`block py-3 font-medium ${
+                      active ? 'text-brand-orange' : 'text-gray-700 hover:text-brand-blue'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
 
             <li className="pt-4">
               <Link

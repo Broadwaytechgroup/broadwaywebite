@@ -1,44 +1,38 @@
-import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import FAQ from '@/components/FAQ';
-
-const pageCards = [
-  { title: 'Formations', description: 'Parcours pratiques et certifications reconnues.', href: '/trainings' },
-  { title: 'Boutique', description: 'Équipements modernes pour vos projets IT.', href: '/shop' },
-  { title: 'Réalisations', description: 'Découvrir nos projets et cas clients.', href: '/portfolio' },
-  { title: 'Contact', description: 'Nous contacter pour un accompagnement personnalisé.', href: '/contact' },
-];
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <section className="section-padding bg-gray-50">
-        <div className="container-wide">
-          <div className="text-center mb-10">
-            <span className="section-label justify-center">
-              <span className="w-8 h-px bg-brand-orange" /> Découvrez nos pages <span className="w-8 h-px bg-brand-orange" />
+
+      <section className="section-padding bg-white">
+        <div className="container-wide grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="section-label">
+              <span className="w-8 h-px bg-brand-orange" /> Notre vision
             </span>
-            <h2 className="section-title mt-4">Choisissez la page qui correspond à votre besoin</h2>
-            <p className="section-subtitle mx-auto max-w-2xl">
-              Pour améliorer la vitesse, chaque page se charge indépendamment et ne télécharge pas tous les contenus en même temps.
+            <h2 className="section-title mt-4">LA TECHNOLOGIE QUI OUVRE LA VOIE</h2>
+            <p className="section-subtitle mt-6 max-w-xl">
+              Nous accompagnons les entreprises à transformer leurs défis en opportunités grâce à des solutions
+              digitales robustes, intelligentes et conçues pour durer.
+            </p>
+            <p className="mt-5 max-w-xl text-base leading-8 text-gray-600">
+              Chaque projet est pensé pour renforcer votre agilité, sécuriser vos opérations et accélérer votre croissance,
+              avec une approche à la fois technique, humaine et orientée résultats.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {pageCards.map((page) => (
-              <Link
-                key={page.href}
-                to={page.href}
-                className="card-glass p-6 transition hover:-translate-y-1"
-              >
-                <h3 className="font-display font-bold text-lg text-brand-dark mb-3">{page.title}</h3>
-                <p className="text-sm text-gray-600">{page.description}</p>
-              </Link>
-            ))}
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1300&q=80"
+              alt="Professionnels noirs en réunion tech"
+              className="h-[480px] w-full rounded-[1.5rem] object-cover"
+            />
           </div>
         </div>
       </section>
+
       <FAQ />
     </main>
   );

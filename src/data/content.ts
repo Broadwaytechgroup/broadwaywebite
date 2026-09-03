@@ -1,17 +1,11 @@
 export const NAV_LINKS = [
   { label: 'Accueil', href: '/' },
+  { label: 'À propos', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Solutions', href: '/solutions' },
   { label: 'Formations', href: '/trainings' },
   { label: 'Boutique', href: '/shop' },
   { label: 'Réalisations', href: '/portfolio' },
-  { label: 'Contact', href: '/contact' },
-];
-
-export const ABOUT_NAV_LINKS = [
-  { label: 'À propos', href: '/about' },
-  { label: 'Services', href: '/about' },
-  { label: 'Solutions', href: '/about' },
-  { label: 'Technologies', href: '/about' },
-  { label: 'Notre processus', href: '/about' },
 ];
 
 export const SERVICES = [
@@ -19,71 +13,85 @@ export const SERVICES = [
     icon: 'Code2',
     title: 'Développement Web',
     description: "Applications web sur mesure, performantes et évolutives, conçues pour propulser votre présence digitale.",
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Smartphone',
     title: 'Développement Mobile',
     description: "Applications iOS et Android natives et multiplateformes, intuitives et orientées expérience utilisateur.",
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Cpu',
     title: 'Génie logiciel',
     description: "Architecture logicielle robuste, ingénierie de qualité et cycles de développement maîtrisés de bout en bout.",
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Cloud',
     title: 'Solutions Cloud',
     description: "Migration, optimisation et architecture cloud sécurisées sur AWS, Azure et Google Cloud Platform.",
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'ShieldCheck',
     title: 'Cybersécurité',
     description: "Audit, protection et conformité de vos systèmes. Nous sécurisons vos données et votre réputation.",
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Network',
     title: 'Réseaux informatiques',
     description: "Conception, déploiement et administration de réseaux d'entreprise fiables et hautement disponibles.",
+    image: 'https://images.unsplash.com/photo-1558494949cc5c5f4b0c6b0b2f1f6c2ec?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Server',
     title: 'Infrastructure IT',
     description: "Infrastructure évolutive, virtualisation et architecture haute disponibilité pour vos systèmes critiques.",
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Wrench',
     title: 'Maintenance informatique',
     description: "Support et maintenance préventive et corrective pour garantir la continuité de votre activité.",
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'ShoppingCart',
     title: 'Vente de matériel informatique',
     description: "Fourniture d'équipements certifiés, serveurs, postes et périphériques sélectionnés pour leur fiabilité.",
+    image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Radio',
     title: 'Télécommunications',
     description: "Solutions de communication unifiée, VoIP et connectivité haut débit pour entreprises multi-sites.",
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Lightbulb',
     title: 'Conseil en transformation digitale',
     description: "Stratégie digitale, accompagnement au changement et feuille de route technologique claire et mesurable.",
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'BrainCircuit',
     title: 'Intelligence artificielle',
     description: "Modèles d'IA, automatisation intelligente et analyse de données pour des décisions plus éclairées.",
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Puzzle',
     title: 'Intégration de solutions',
     description: "Intégration de vos outils métier, ERP et API pour un écosystème informationnel cohérent et performant.",
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',
   },
   {
     icon: 'Headset',
     title: 'Support technique',
     description: "Assistance technique réactive, helpdesk et support N1/N2/N3 assuré par des experts dédiés.",
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80',
   },
 ];
 
@@ -99,13 +107,13 @@ export const WHY_US = [
 ];
 
 export const SOLUTIONS = [
-  { icon: 'Building2', title: 'Entreprises', description: "PME et grands groupes : transformation digitale, ERP, automatisation." },
-  { icon: 'Landmark', title: 'Administrations', description: "Modernisation des services publics et dématérialisation des procédures." },
-  { icon: 'HeartHandshake', title: 'ONG', description: "Solutions numériques pour l'impact social, la transparence et la coordination." },
-  { icon: 'Stethoscope', title: 'Santé', description: "Dossiers médicaux, télémédecine et conformité des données de santé." },
-  { icon: 'GraduationCap', title: 'Éducation', description: "Plateformes e-learning, gestion scolaire et environnements interactifs." },
-  { icon: 'Banknote', title: 'Finance', description: "Fintech, paiement, sécurité bancaire et conformité réglementaire." },
-  { icon: 'Store', title: 'Commerce', description: "E-commerce, omnicanal, gestion des stocks et fidélisation client." },
+  { icon: 'Building2', title: 'Entreprises', description: "PME et grands groupes : transformation digitale, ERP, automatisation.", image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'Landmark', title: 'Administrations', description: "Modernisation des services publics et dématérialisation des procédures.", image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'HeartHandshake', title: 'ONG', description: "Solutions numériques pour l'impact social, la transparence et la coordination.", image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'Stethoscope', title: 'Santé', description: "Dossiers médicaux, télémédecine et conformité des données de santé.", image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'GraduationCap', title: 'Éducation', description: "Plateformes e-learning, gestion scolaire et environnements interactifs.", image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'Banknote', title: 'Finance', description: "Fintech, paiement, sécurité bancaire et conformité réglementaire.", image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80' },
+  { icon: 'Store', title: 'Commerce', description: "E-commerce, omnicanal, gestion des stocks et fidélisation client.", image: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80' },
 ];
 
 export const PROCESS = [

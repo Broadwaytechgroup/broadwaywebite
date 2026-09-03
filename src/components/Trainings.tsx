@@ -49,9 +49,7 @@ export default function Trainings() {
     <section id="trainings" className="section-padding bg-gray-50">
       <div className="container-wide">
         <div className="text-center max-w-3xl mx-auto mb-8 animate-on-scroll">
-          <span className="section-label justify-center">
-            <span className="w-8 h-px bg-brand-orange" /> BROADWAY ACADEMY <span className="w-8 h-px bg-brand-orange" />
-          </span>
+          
           <h2 className="section-title mb-3">
             Apprendre aujourd'hui, <span className="gradient-text">réussir demain</span>
           </h2>

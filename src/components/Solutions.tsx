@@ -7,9 +7,7 @@ export default function Solutions() {
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-orange/5 rounded-full blur-3xl" />
       <div className="container-wide relative">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-          <span className="section-label justify-center">
-            <span className="w-8 h-px bg-brand-orange" /> Nos solutions <span className="w-8 h-px bg-brand-orange" />
-          </span>
+          
           <h2 className="section-title mb-5">
             Des solutions par <span className="gradient-text">secteur</span>
           </h2>
@@ -24,18 +22,26 @@ export default function Solutions() {
             return (
               <div
                 key={sol.title}
-                className="group relative p-8 rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 overflow-hidden animate-on-scroll"
+                className="group overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-on-scroll"
                 style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
               >
-                {/* Hover accent bar */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-blue to-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center group-hover:bg-brand-blue transition-colors duration-300">
-                    <Icon size={26} className="text-brand-blue group-hover:text-white transition-colors duration-300" />
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={sol.image}
+                    alt={sol.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-brand-dark/20 to-transparent" />
+                  <div className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm">
+                    <Icon size={22} className="text-brand-blue" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-brand-dark">{sol.title}</h3>
                 </div>
-                <p className="text-gray-500 leading-relaxed">{sol.description}</p>
+
+                <div className="p-6">
+                  <h3 className="font-display font-bold text-xl text-brand-dark mb-3">{sol.title}</h3>
+                  <p className="text-gray-500 leading-relaxed">{sol.description}</p>
+                </div>
               </div>
             );
           })}

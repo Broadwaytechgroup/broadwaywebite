@@ -127,9 +127,7 @@ export default function Shop() {
     <section id="shop" className="section-padding bg-white">
       <div className="container-wide">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
-          <span className="section-label justify-center">
-            <span className="w-8 h-px bg-brand-orange" /> Boutique <span className="w-8 h-px bg-brand-orange" />
-          </span>
+          
           <h2 className="section-title mb-5">
             Des <span className="gradient-text">équipements modernes</span> à portée de main
           </h2>
@@ -181,7 +179,7 @@ export default function Shop() {
                       ))}
                     </ul>
 
-                    <a href="#contact" className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors">
+                    <a href="/contact" className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors">
                       Demander un devis
                     </a>
                   </div>
