@@ -1,4 +1,5 @@
 import { ArrowRight, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -25,12 +26,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="/about" className="btn-orange">
+            <Link to="/about" className="btn-orange">
               Découvrir nos services <ArrowRight size={18} />
-            </a>
-            <a href="/contact" className="btn-outline-light">
+            </Link>
+            <Link to="/contact" className="btn-outline-light">
               Nous contacter <Mail size={18} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

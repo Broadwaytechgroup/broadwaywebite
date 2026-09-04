@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import macbookPro from '../assets/shop/mac.jpg';
 import dellXps from '../assets/shop/dell.png';
 import poweredgeR760 from '../assets/shop/serverdell.avif';
@@ -179,9 +180,9 @@ export default function Shop() {
                       ))}
                     </ul>
 
-                    <a href="/contact" className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors">
+                    <Link to="/contact" className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors">
                       Demander un devis
-                    </a>
+                    </Link>
                   </div>
                 ))}
               </div>

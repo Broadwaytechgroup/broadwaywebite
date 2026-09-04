@@ -20,21 +20,26 @@ export default function Solutions() {
           {SOLUTIONS.map((sol, i) => {
             const Icon = getIcon(sol.icon);
             return (
-              <div
+              <article
                 key={sol.title}
-                className="group overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-on-scroll"
+                className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.08)] animate-on-scroll"
                 style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
               >
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={sol.image}
-                    alt={sol.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-brand-dark/20 to-transparent" />
-                  <div className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm">
-                    <Icon size={22} className="text-brand-blue" />
+                <div className="relative overflow-hidden">
+                  <div className="relative h-52 overflow-hidden rounded-b-[1.5rem]">
+                    <img
+                      src={sol.image}
+                      alt={sol.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/25 to-transparent" />
+                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
+                      <Icon size={20} className="text-brand-blue" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                      Secteur
+                    </div>
                   </div>
                 </div>
 
@@ -42,7 +47,7 @@ export default function Solutions() {
                   <h3 className="font-display font-bold text-xl text-brand-dark mb-3">{sol.title}</h3>
                   <p className="text-gray-500 leading-relaxed">{sol.description}</p>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

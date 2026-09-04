@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Facebook, Instagram, Youtube, Send, ArrowRight } from 'lucide-react';
 import { NAV_LINKS, SERVICES } from '@/data/content';
 import logolight from '@/assets/logolight.png';
@@ -53,14 +54,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <a href="#hero" className="flex items-center">
-  <img
-    src={logolight}
-    alt="Broadway Technologies"
-    className="h-30 md:h-36 lg:h-40 w-auto transition-transform duration-300 hover:scale-105"
-  />
-</a>
-              
+              <Link to="/" className="flex items-center">
+                <img
+                  src={logolight}
+                  alt="Broadway Technologies"
+                  className="h-30 md:h-36 lg:h-40 w-auto transition-transform duration-300 hover:scale-105"
+                />
+              </Link>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Votre partenaire de confiance pour la transformation digitale. Du cloud à l'IA, nous construisons l'avenir numérique de votre organisation.
@@ -85,10 +85,10 @@ export default function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-white/60 hover:text-brand-orange transition-colors text-sm flex items-center gap-2 group">
+                  <Link to={link.href} className="text-white/60 hover:text-brand-orange transition-colors text-sm flex items-center gap-2 group">
                     <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -ml-5 group-hover:ml-0 transition-all" />
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,9 +100,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {SERVICES.slice(0, 8).map((s) => (
                 <li key={s.title}>
-                  <a href="/services" className="text-white/60 hover:text-brand-orange transition-colors text-sm">
+                  <Link to="/services" className="text-white/60 hover:text-brand-orange transition-colors text-sm">
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

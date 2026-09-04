@@ -25,7 +25,7 @@ export default function Home() {
 
           <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
             <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1300&q=80"
+              src="https://www.niras.com/media/qxzj5byr/private-sector-development-in-zambia.jpg"
               alt="Professionnels noirs en réunion tech"
               className="h-[480px] w-full rounded-[1.5rem] object-cover"
             />

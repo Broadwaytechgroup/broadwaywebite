@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '@/data/content';
 import { getIcon } from '@/lib/icons';
 
@@ -23,37 +24,40 @@ export default function Services() {
           {SERVICES.map((service, i) => {
             const Icon = getIcon(service.icon);
             return (
-              <div
+              <article
                 key={service.title}
-                className="group overflow-hidden rounded-[1.5rem] border border-gray-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-on-scroll"
+                className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.10)] animate-on-scroll"
                 style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
               >
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-brand-dark/20 to-transparent" />
-                  <div className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm">
-                    <Icon size={22} className="text-brand-blue" />
+                <div className="relative overflow-hidden">
+                  <div className="relative h-52 overflow-hidden rounded-b-[1.5rem]">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
+                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
+                      <Icon size={20} className="text-brand-blue" />
+                    </div>
+                    
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="font-display font-bold text-lg text-brand-dark mb-3 group-hover:text-brand-blue transition-colors">
+                  <h3 className="font-display font-bold text-xl text-brand-dark mb-3 group-hover:text-brand-blue transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-5">{service.description}</p>
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue group-hover:text-brand-orange transition-colors"
                   >
                     En savoir plus <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
