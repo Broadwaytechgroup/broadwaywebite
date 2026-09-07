@@ -37,9 +37,7 @@ export default function Solutions() {
                     <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-[4px] bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
                       <Icon size={20} className="text-brand-blue" />
                     </div>
-                    <div className="absolute bottom-4 left-4 rounded-[4px] border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-                      Secteur
-                    </div>
+                    
                   </div>
                 </div>
 
