@@ -26,11 +26,11 @@ export default function Services() {
             return (
               <article
                 key={service.title}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.10)] animate-on-scroll"
+                className="group relative overflow-hidden rounded-[4px] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.10)] animate-on-scroll"
                 style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
               >
                 <div className="relative overflow-hidden">
-                  <div className="relative h-52 overflow-hidden rounded-b-[1.5rem]">
+                  <div className="relative h-52 overflow-hidden rounded-b-[4px]">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -38,10 +38,9 @@ export default function Services() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
-                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
+                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-[4px] bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
                       <Icon size={20} className="text-brand-blue" />
                     </div>
-                    
                   </div>
                 </div>
 

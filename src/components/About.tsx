@@ -43,11 +43,11 @@ export default function About() {
 
           {/* Right: image with circuit ring */}
           <div className="relative animate-on-scroll animate-on-scroll-delay-2">
-            <div className="relative rounded-3xl overflow-hidden shadow-card-hover">
+            <div className="relative rounded-[4px] overflow-hidden shadow-card-hover">
               <img
-                src="https://wigmoretrading.com/wp-content/uploads/2023/05/iStock-1087487042.jpg"
+                src="/images/IMG_3433.jpg"
                 alt="Équipe Broadway Technologies au travail"
-                className="w-full h-[480px] object-cover"
+                className="w-full h-[480px] object-cover rounded-[4px]"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent" />
@@ -59,11 +59,11 @@ export default function About() {
         </div>
 
         <div className="mt-20 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
-          <div className="relative rounded-[2rem] overflow-hidden shadow-card-hover animate-on-scroll">
+          <div className="relative rounded-[4px] overflow-hidden shadow-card-hover animate-on-scroll">
             <img
-              src="https://media.istockphoto.com/id/1622648941/ko/%EC%82%AC%EC%A7%84/%ED%95%A8%EA%BB%98-%EC%9D%BC%ED%95%98%EA%B8%B0-%ED%95%98%EC%96%80-%ED%98%84%EB%8C%80-%EC%82%AC%EB%AC%B4%EC%8B%A4%EC%97%90%EC%84%9C-%EB%8F%99%EB%A3%8C%EC%99%80-%EC%83%88%EB%A1%9C%EC%9A%B4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EB%8C%80%ED%95%B4-%EB%85%BC%EC%9D%98.jpg?s=170667a&w=0&k=20&c=Yja1Rz5qPR_fuuy6UWhuf4D9OyeYkV-_n8SyNpr9Dbw="
+              src="/images/IMG_3435.jpg"
               alt="Équipe et collaboration Broadway Technologies"
-              className="h-[420px] w-full object-cover"
+              className="h-[420px] w-full object-cover rounded-[4px]"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/75 via-brand-dark/40 to-transparent" />

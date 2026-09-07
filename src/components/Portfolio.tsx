@@ -45,10 +45,10 @@ export default function Portfolio() {
           {filtered.map((project, i) => (
             <div
               key={project.title}
-              className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 bg-white"
+              className="group relative rounded-[4px] overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-400 hover:-translate-y-1 bg-white"
               style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
             >
-              <div className="relative h-60 overflow-hidden">
+              <div className="relative h-60 overflow-hidden rounded-[4px]">
                 <img
                   src={project.image}
                   alt={project.title}

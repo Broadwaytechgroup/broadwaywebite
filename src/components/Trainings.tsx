@@ -50,7 +50,7 @@ export default function Trainings() {
   return (
     <section id="trainings" className="section-padding bg-[radial-gradient(circle_at_top,#f8fafc_0%,#eef4ff_35%,#f8fafc_100%)]">
       <div className="container-wide">
-        <div className="relative overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] mb-12 animate-on-scroll">
+        <div className="relative overflow-hidden rounded-[4px] border border-gray-100 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] mb-12 animate-on-scroll">
           <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/85 via-brand-blue/70 to-brand-blue/30" />
           <img
             src={trainingHeroImage}
@@ -60,8 +60,8 @@ export default function Trainings() {
 
           <div className="relative grid gap-8 px-6 py-8 md:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-12 lg:py-14">
             <div className="max-w-3xl">
-              <span className="section-label  bg-brand-orange border-white/20 bg-white/10 backdrop-blur-sm">
-                <span  /> Broadway Academy
+              <span className="section-label border border-white/20 bg-white/10 text-white backdrop-blur-sm">
+                <span className="w-8 h-px bg-brand-orange" /> Broadway Academy
               </span>
 
               <h2 className="mt-5 text-3xl font-black tracking-tight text-white md:text-5xl">
@@ -82,8 +82,8 @@ export default function Trainings() {
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-md rounded-[1.5rem] border border-white/20 bg-white/10 p-4 backdrop-blur-md shadow-2xl">
-              <div className="rounded-[1.25rem] overflow-hidden border border-white/10 bg-white/5">
+            <div className="relative mx-auto w-full max-w-md rounded-[4px] border border-white/20 bg-white/10 p-4 backdrop-blur-md shadow-2xl">
+              <div className="rounded-[4px] overflow-hidden border border-white/10 bg-white/5">
                 <img
                   src={trainingHeroImage}
                   alt="Atelier de formation"
@@ -113,10 +113,10 @@ export default function Trainings() {
           {levels.map((lvl, i) => (
             <div
               key={lvl.title}
-              className="group rounded-[1.5rem] border border-gray-100 bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-on-scroll"
+              className="group rounded-[4px] border border-gray-100 bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-on-scroll"
               style={{ transitionDelay: `${i * 0.06}s` }}
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-[4px] bg-brand-orange/10 text-brand-orange">
                 <span className="text-lg font-black">0{i + 1}</span>
               </div>
               <h4 className="font-display font-bold text-2xl text-brand-dark mb-2">{lvl.title}</h4>
@@ -143,9 +143,9 @@ export default function Trainings() {
             {domains.map((d) => (
               <div
                 key={d}
-                className="group flex items-center gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:border-brand-orange/40 hover:bg-brand-orange/5"
+                className="group flex items-center gap-3 rounded-[4px] border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:border-brand-orange/40 hover:bg-brand-orange/5"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-brand-blue/10 text-brand-blue">
                   <span className="h-3 w-3 rounded-full bg-brand-orange" />
                 </span>
                 <span className="text-sm font-semibold text-brand-dark">{d}</span>
@@ -154,13 +154,13 @@ export default function Trainings() {
           </div>
         </div>
 
-        <div className="mb-10 animate-on-scroll rounded-[1.5rem] border border-gray-100 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.04)]">
+        <div className="mb-10 animate-on-scroll rounded-[4px] border border-gray-100 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.04)]">
           <h4 className="font-display text-2xl font-semibold text-brand-dark mb-4">Certifications reconnues</h4>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 items-center">
             {certifications.map((c) => (
               <div
                 key={c.name}
-                className="flex flex-col items-center justify-center rounded-2xl border border-gray-100 bg-gray-50 p-4 transition-all duration-300 hover:border-brand-orange/30 hover:bg-white"
+                className="flex flex-col items-center justify-center rounded-[4px] border border-gray-100 bg-gray-50 p-4 transition-all duration-300 hover:border-brand-orange/30 hover:bg-white"
               >
                 <img src={c.logo} alt={c.name} className="h-12 object-contain" />
                 <div className="mt-3 text-xs font-medium text-center text-gray-700">{c.name}</div>

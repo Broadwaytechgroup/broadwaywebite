@@ -1,6 +1,5 @@
 import Hero from '@/components/Hero';
 import FAQ from '@/components/FAQ';
-
 export default function Home() {
   return (
     <main>
@@ -23,11 +22,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+          <div className="overflow-hidden rounded-[4px] border border-slate-200 bg-white p-3 shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
             <img
-              src="https://www.niras.com/media/qxzj5byr/private-sector-development-in-zambia.jpg"
+              src="/images/IMG_3432.jpg"
               alt="Professionnels noirs en réunion tech"
-              className="h-[480px] w-full rounded-[1.5rem] object-cover"
+              className="h-[480px] w-full rounded-[4px] object-cover"
             />
           </div>
         </div>

@@ -22,11 +22,11 @@ export default function Solutions() {
             return (
               <article
                 key={sol.title}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.08)] animate-on-scroll"
+                className="group relative overflow-hidden rounded-[4px] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.08)] animate-on-scroll"
                 style={{ transitionDelay: `${(i % 3) * 0.1}s` }}
               >
                 <div className="relative overflow-hidden">
-                  <div className="relative h-52 overflow-hidden rounded-b-[1.5rem]">
+                  <div className="relative h-52 overflow-hidden rounded-b-[4px]">
                     <img
                       src={sol.image}
                       alt={sol.title}
@@ -34,10 +34,10 @@ export default function Solutions() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/25 to-transparent" />
-                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
+                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-[4px] bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
                       <Icon size={20} className="text-brand-blue" />
                     </div>
-                    <div className="absolute bottom-4 left-4 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    <div className="absolute bottom-4 left-4 rounded-[4px] border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
                       Secteur
                     </div>
                   </div>

@@ -43,7 +43,7 @@ export const SERVICES = [
     icon: 'Network',
     title: 'Réseaux informatiques',
     description: "Conception, déploiement et administration de réseaux d'entreprise fiables et hautement disponibles.",
-    image: 'https://images.unsplash.com/photo-1558494949cc5c5f4b0c6b0b2f1f6c2ec?auto=format&fit=crop&w=900&q=80',
+    image: 'https://unsplash.com/fr/photos/un-rack-de-serveurs-avec-des-fils-et-des-fils-qui-y-sont-attaches-c-lSQecD9oI',
   },
   {
     icon: 'Server',
