@@ -44,7 +44,7 @@ const certifications = [
 
 const academyUrl = 'https://example.com';
 const trainingHeroImage =
-  'https://ghd-p-001.sitecorecontenthub.cloud/api/public/content/91b7ab70780141ad9dac5b6036dfa17c?v=39e792b8&t=';
+  '/images/IMG_3434.jpg';
 
 export default function Trainings() {
   return (
@@ -89,21 +89,6 @@ export default function Trainings() {
                   alt="Atelier de formation"
                   className="h-72 w-full object-cover"
                 />
-              </div>
-
-              <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-                <div className="rounded-xl bg-white/10 p-3 text-white">
-                  <p className="text-2xl font-black text-brand-orange">+150</p>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-blue-100">Apprenants</p>
-                </div>
-                <div className="rounded-xl bg-white/10 p-3 text-white">
-                  <p className="text-2xl font-black text-brand-orange">12</p>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-blue-100">Domaines</p>
-                </div>
-                <div className="rounded-xl bg-white/10 p-3 text-white">
-                  <p className="text-2xl font-black text-brand-orange">98%</p>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-blue-100">Satisfaction</p>
-                </div>
               </div>
             </div>
           </div>
