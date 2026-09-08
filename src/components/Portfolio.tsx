@@ -56,9 +56,6 @@ export default function Portfolio() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent" />
-                <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-brand-blue">
-                  {project.category}
-                </span>
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between gap-3">

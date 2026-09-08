@@ -34,10 +34,6 @@ export default function Solutions() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/25 to-transparent" />
-                    <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-[4px] bg-white/90 shadow-md backdrop-blur-sm ring-1 ring-white/50">
-                      <Icon size={20} className="text-brand-blue" />
-                    </div>
-                    
                   </div>
                 </div>
 

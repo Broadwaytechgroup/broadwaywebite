@@ -120,9 +120,7 @@ export const PROCESS = [
   { icon: 'Search', title: 'Analyse', description: "Compréhension de vos besoins, du contexte métier et des objectifs." },
   { icon: 'PenTool', title: 'Conception', description: "Architecture, UX/UI design et prototypage validés avec vous." },
   { icon: 'Code2', title: 'Développement', description: "Implémentation agile, revues de code et intégration continue." },
-  { icon: 'CheckCircle', title: 'Tests', description: "Tests unitaires, d'intégration et de charge pour une qualité garantie." },
   { icon: 'Rocket', title: 'Déploiement', description: "Mise en production sécurisée, monitoring et plan de rollback." },
-  { icon: 'Headset', title: 'Support', description: "Maintenance évolutive, support utilisateur et amélioration continue." },
 ];
 
 export const TECHNOLOGIES = [
