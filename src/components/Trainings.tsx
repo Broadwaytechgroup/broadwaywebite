@@ -51,21 +51,20 @@ export default function Trainings() {
     <section id="trainings" className="section-padding bg-[radial-gradient(circle_at_top,#f8fafc_0%,#eef4ff_35%,#f8fafc_100%)]">
       <div className="container-wide">
         <div className="relative overflow-hidden rounded-[4px] border border-gray-100 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] mb-12 animate-on-scroll">
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/85 via-brand-blue/70 to-brand-blue/30" />
           <img
             src={trainingHeroImage}
             alt="Formations Broadway"
-            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            className="absolute inset-0 h-full w-full object-cover opacity-100"
           />
 
-          <div className="relative grid gap-8 px-6 py-8 md:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-12 lg:py-14">
+          <div className="relative px-6 py-8 md:px-10 lg:px-12 lg:py-14">
             <div className="max-w-3xl">
               <span className="section-label border border-white/20 bg-white/10 text-white backdrop-blur-sm">
-                <span className="w-8 h-px bg-brand-orange" /> Broadway Academy
+                Broadway Academy
               </span>
 
               <h2 className="mt-5 text-3xl font-black tracking-tight text-white md:text-5xl">
-                Apprendre aujourd'hui, <span className="gradient-text text-white/90">réussir demain</span>
+                Apprendre aujourd'hui, <span className="gradient-text text-brand-blue">réussir </span>demain
               </h2>
 
               <p className="mt-5 max-w-xl text-base text-blue-50 md:text-lg">
@@ -79,16 +78,6 @@ export default function Trainings() {
                 <Link to="/contact" className="text-sm font-semibold text-white hover:text-brand-orange transition-colors">
                   Demander un programme sur-mesure
                 </Link>
-              </div>
-            </div>
-
-            <div className="relative mx-auto w-full max-w-md rounded-[4px] border border-white/20 bg-white/10 p-4 backdrop-blur-md shadow-2xl">
-              <div className="rounded-[4px] overflow-hidden border border-white/10 bg-white/5">
-                <img
-                  src={trainingHeroImage}
-                  alt="Atelier de formation"
-                  className="h-72 w-full object-cover"
-                />
               </div>
             </div>
           </div>
