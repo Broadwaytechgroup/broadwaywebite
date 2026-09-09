@@ -8,7 +8,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(120deg, rgba(5,17,31,0.72) 0%, rgba(11,29,49,0.7) 45%, rgba(9,27,49,0.76) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80')",
+            "linear-gradient(120deg, rgba(5,17,31,0.72) 0%, rgba(11,29,49,0.7) 45%, rgba(9,27,49,0.76) 100%), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70')",
         }}
       />
 

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@azure/identity": "^4.13.1",
+    "@supabase/server": "^1.5.3",
     "@supabase/supabase-js": "^2.57.4",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
