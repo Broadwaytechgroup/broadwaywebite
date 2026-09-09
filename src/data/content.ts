@@ -118,9 +118,11 @@ export const SOLUTIONS = [
 
 export const PROCESS = [
   { icon: 'Search', title: 'Analyse', description: "Compréhension de vos besoins, du contexte métier et des objectifs." },
+  { icon: 'ClipboardCheck', title: 'Audit', description: "Cadrage technique, priorisation des fonctionnalités et validation du périmètre." },
   { icon: 'PenTool', title: 'Conception', description: "Architecture, UX/UI design et prototypage validés avec vous." },
   { icon: 'Code2', title: 'Développement', description: "Implémentation agile, revues de code et intégration continue." },
-  { icon: 'Rocket', title: 'Déploiement', description: "Mise en production sécurisée, monitoring et plan de rollback." },
+  { icon: 'ShieldCheck', title: 'Tests', description: "Contrôles qualité, sécurité, performance et validation avant mise en ligne." },
+  { icon: 'Rocket', title: 'Déploiement', description: "Mise en production sécurisée, monitoring et accompagnement post-livraison." },
 ];
 
 export const TECHNOLOGIES = [
